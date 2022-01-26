@@ -1,4 +1,4 @@
-CHARDFLAGS := -Wl,-init,init -fPIC -shared -Wl,-init,init
+CHARDFLAGS := -fPIC -shared -Wl,-init,init
 
 CFLAGS = -Wall -Werror -Wextra -O2
 

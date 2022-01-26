@@ -3,6 +3,7 @@
 #include <stdatomic.h>
 #include <dlfcn.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef void* (*malloc_func_t)(size_t);
 
@@ -23,11 +24,8 @@ void *malloc(size_t size) {
     return result;
 }
 
-void init() {
+__attribute__((constructor)) void init() {
     real_malloc = dlsym(RTLD_NEXT, "malloc");
-    if (real_malloc == malloc) {
-        real_malloc = dlsym(RTLD_NEXT, "malloc");
-    }
     if (real_malloc == NULL) {
         fprintf(stderr, "Couldn't find real malloc function!");
         exit(-1);
