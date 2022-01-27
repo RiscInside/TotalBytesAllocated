@@ -10,3 +10,4 @@ total_bytes_allocated.so: total_bytes_allocated.c
 
 clean:
 	rm -f total_bytes_allocated.so
+
