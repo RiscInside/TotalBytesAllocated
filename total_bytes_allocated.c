@@ -17,7 +17,7 @@ void *malloc(size_t size) {
     return NULL;
   }
 
-  // malloc can be called from many threads, so atomics are a neccessity
+  // malloc can be called from many threads, hence use of atomics
   size_t new_total =
       atomic_fetch_add_explicit(&total_memory, size, memory_order_relaxed) +
       size;
